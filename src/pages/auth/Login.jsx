@@ -30,9 +30,7 @@ const Login = () => {
 		e.preventDefault();
 		try {
 			const response = await axios.post(
-				!form.password.includes("vet")
-					? `${import.meta.env.VITE_BACKEND_URL}/login`
-					: `${import.meta.env.VITE_BACKEND_URL}/pacientes/login`,
+				`${import.meta.env.VITE_BACKEND_URL}/login`,
 				form
 			);
 			setAuth(response.data);
@@ -48,9 +46,9 @@ const Login = () => {
 	return (
 		<>
 			<div
-				className="w-1/2 min-h-screen bg-[url('/public/images/doglogin.jpg')] 
+				className="w-1/2 min-h-screen bg-[url('./assets/fondos/matriculas.jpeg')] 
             bg-no-repeat bg-cover bg-center sm:block hidden
-            "
+            "		
 			></div>
 
 			<div className="w-1/2 min-h-screen bg-white flex justify-center items-center">
@@ -62,10 +60,10 @@ const Login = () => {
 					)}
 
 					<h1 className="text-3xl font-semibold mb-2 text-center uppercase  text-gray-500">
-						Welcome back
+						BIENVENIDO
 					</h1>
 					<small className="text-gray-400 block my-4 text-sm">
-						Welcome back! Please enter your details
+						Bienvenido de nuevo, por favor inicia sesión
 					</small>
 
 					<form onSubmit={handleSubmit}>
@@ -74,7 +72,7 @@ const Login = () => {
 								className="mb-2 block text-sm font-semibold"
 								htmlFor="email"
 							>
-								Email
+								Correo Electrónico
 							</label>
 							<input
 								required
@@ -83,7 +81,7 @@ const Login = () => {
 								onChange={handleChange}
 								value={form.email || ""}
 								type="email"
-								placeholder="Enter you email"
+								placeholder="Ingrese su correo electrónico"
 								className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-2 text-gray-500"
 							/>
 						</div>
@@ -93,7 +91,7 @@ const Login = () => {
 								className="mb-2 block text-sm font-semibold"
 								htmlFor="password"
 							>
-								Password
+								Contraseña
 							</label>
 							<input
 								required
@@ -108,50 +106,19 @@ const Login = () => {
 						</div>
 
 						<div className="my-4">
-							<button className="py-2 w-full block text-center bg-gray-500 text-slate-300 border rounded-xl hover:scale-100 duration-300 hover:bg-gray-900 hover:text-white">
-								Login
+							<button className="py-1.5 w-full block text-center bg-gray-500 text-slate-300 border rounded-xl hover:scale-100 duration-300 hover:bg-gray-900 hover:text-white">
+								Iniciar Sesión
 							</button>
 						</div>
 					</form>
 
-					<div className="mt-6 grid grid-cols-3 items-center text-gray-400">
-						<hr className="border-gray-400" />
-						<p className="text-center text-sm">OR</p>
-						<hr className="border-gray-400" />
-					</div>
-
-					<button className="bg-white border py-2 w-full rounded-xl mt-5 flex justify-center items-center text-sm hover:scale-105 duration-300 hover:bg-black hover:text-white">
-						<img
-							className="w-5 mr-2"
-							src="https://cdn-icons-png.flaticon.com/512/281/281764.png"
-						/>
-						Sign in with Google
-					</button>
-
-					<button className="bg-white border py-2 w-full rounded-xl mt-5 flex justify-center items-center text-sm hover:scale-105 duration-300 hover:bg-blue-600 hover:text-white">
-						<img
-							className="w-5 mr-2"
-							src="https://cdn-icons-png.flaticon.com/512/733/733547.png"
-						/>
-						Sign in with Google
-					</button>
-
-					<div className="mt-5 text-xs border-b-2 py-4 ">
-						<Link
-							to="/forgot/id"
-							className="underline text-sm text-gray-400 hover:text-gray-900"
-						>
-							Forgot your password?
-						</Link>
-					</div>
-
 					<div className="mt-3 text-sm flex justify-between items-center">
-						<p>Don't have an account?</p>
+						<p>¿No tienes una cuenta?</p>
 						<Link
 							to="/register"
-							className="py-2 px-5 bg-gray-600 text-slate-300 border rounded-xl hover:scale-110 duration-300 hover:bg-gray-900 hover:text-white"
+							className="py-1 px-4 bg-gray-600 text-slate-300 border rounded-xl hover:scale-110 duration-300 hover:bg-gray-900 hover:text-white"
 						>
-							Register
+							Registrate
 						</Link>
 					</div>
 				</div>

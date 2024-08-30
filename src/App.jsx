@@ -3,24 +3,28 @@ import Auth from "@layouts/Auth";
 import { LandinPage } from "@pages/LandinPage";
 import { Register } from "@pages/auth/Register";
 import Login from "@pages/auth/Login";
-import { Forgot } from "@pages/auth/Forgot";
-import { Confirmar } from "@pages/auth/Confirmar";
-import { Reestablecer } from "@pages/auth/Reestablecer";
-import { NuevoPassword } from "@pages/auth/NuevoPassword";
-
+import Perfil from "@pages/Perfil";
 import { NotFound } from "@pages/NotFound";
 import Dashboard from "@layouts/Dashboard";
-import Listar from "@pages/Listar";
-import Visualizar from "@pages/Visualizar";
-import Crear from "@pages/Crear";
-import Actualizar from "@pages/Actualizar";
-import Perfil from "@pages/Perfil";
+
+import Estudiantes from "@pages/Estudiantes";
+import Materias from "@pages/Materias";
+import Matriculas from "@pages/Matriculas";
+
+import ActualizarEstudiantes from "@pages/ActualizarEstudiantes";
+import ActualizarMaterias from "@pages/ActualizarMaterias";
+import ActualizarMatriculas from "./pages/ActualizarMatriculas";
+
+import RegistarEstudiante from "./pages/RegistrarEstudiante";
+import RegistrarMateria from "./pages/RegistrarMateria";
+import RegistrarMatricula from "./pages/RegistrarMatricula";
+
+import VisualizarEstudiantes from "@pages/VisualizarEstudiantes";
+import VisualizarMaterias from "@pages/VisualizarMaterias";
+import VisualizarMatriculas from "@pages/VisualizarMatriculas";
 
 import { AuthProvider } from "@context/AuthProvider";
 import { PrivateRoute } from "@routes/PrivateRoutes";
-import { TratamientosProvider } from "@context/TratamientosProvider";
-import Chat from "@pages/Chat";
-import PrivateRouteWithRole from "@routes/PrivateRouteWithRole";
 
 function App() {
 	return (
@@ -33,61 +37,70 @@ function App() {
 						<Route path="/" element={<Auth />}>
 							<Route index path="login" element={<Login />} />
 							<Route path="register" element={<Register />} />
-							<Route path="forgot/:id" element={<Forgot />} />
-							<Route
-								path="confirmar/:token"
-								element={<Confirmar />}
-							/>
-							<Route
-								path="recuperar-password/:token"
-								element={<Reestablecer />}
-							/>
-							<Route
-								path="nuevo-password/:token"
-								element={<NuevoPassword />}
-							/>
 							<Route path="*" element={<NotFound />} />
 						</Route>
 
 						<Route
 							path="dashboard/*"
 							element={
-								<TratamientosProvider>
-									<PrivateRoute>
-										<Routes>
-											<Route element={<Dashboard />}>
-												<Route
-													index
-													element={<Perfil />}
-												/>
-												<Route
-													path="listar"
-													element={<Listar />}
-												/>
-												<Route
-													path="visualizar/:id"
-													element={<Visualizar />}
-												/>
-												<Route
-													path="crear"
-													element={
-														<PrivateRouteWithRole>
-															<Crear />
-														</PrivateRouteWithRole>
-													}
-												/>
-												<Route
-													path="actualizar/:id"
-													element={<Actualizar />}
-												/>
-												<Route
-													path="chat"
-													element={<Chat />}
-												/>
-											</Route>
-										</Routes>
-									</PrivateRoute>
-								</TratamientosProvider>
+								<PrivateRoute>
+									<Routes>
+										<Route element={<Dashboard />}>
+											<Route
+												index
+												element={<Perfil />}
+											/>
+											<Route
+												path="estudiantes"
+												element={<Estudiantes />}
+											/>
+											<Route
+												path="estudiantes/registrar"
+												element={<RegistarEstudiante />}
+											/>
+											<Route
+												path="estudiantes/visualizar/:cedula"
+												element={<VisualizarEstudiantes />}
+											/>
+											<Route
+												path="estudiantes/actualizar/:id"
+												element={<ActualizarEstudiantes />}
+											/>
+											<Route
+												path="materias"
+												element={<Materias />}
+											/>
+											<Route
+												path="materias/registrar"
+												element={<RegistrarMateria />}
+											/>
+											<Route
+												path="materias/visualizar/:codigo"
+												element={<VisualizarMaterias />}
+											/>
+											<Route
+												path="materias/actualizar/:id"
+												element={<ActualizarMaterias />}
+											/>
+											<Route
+												path="matriculas"
+												element={<Matriculas />}
+											/>
+											<Route
+												path="matriculas/registrar"
+												element={<RegistrarMatricula />}
+											/>
+											<Route
+												path="matriculas/visualizar/:id"
+												element={<VisualizarMatriculas />}
+											/>
+											<Route
+												path="matriculas/acutalizar/:id"
+												element={<ActualizarMatriculas />}
+											/>
+										</Route>
+									</Routes>
+								</PrivateRoute>
 							}
 						/>
 					</Routes>

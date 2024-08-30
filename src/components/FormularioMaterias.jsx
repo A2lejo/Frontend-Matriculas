@@ -5,31 +5,25 @@ import Alertas from "@components/Alertas";
 import { useContext } from "react";
 import { AuthContext } from "@context/AuthProvider";
 
-export const Formulario = ({ paciente }) => {
+export const FormularioMaterias = ({ materia }) => {
 	const navigate = useNavigate();
 
 	const [alerta, setAlerta] = useState({});
 	const { auth } = useContext(AuthContext);
 
 	const [form, setform] = useState({
-		nombre: paciente?.nombre ?? "",
-		propietario: paciente?.propietario ?? "",
-		email: paciente?.email ?? "",
-		celular: paciente?.celular ?? "",
-		salida:
-			new Date(paciente?.salida).toLocaleDateString("en-CA", {
-				timeZone: "UTC",
-			}) ?? "",
-		convencional: paciente?.convencional ?? "",
-		sintomas: paciente?.sintomas ?? "",
+		nombre: materia?.nombre ?? "",
+		codigo: materia?.codigo ?? "",
+		descripcion: materia?.descripcion ?? "",
+		creditos: materia?.creditos ?? ""
 	});
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		if (paciente?._id) {
-			const response = await axios.put(
-				`${import.meta.env.VITE_BACKEND_URL}/paciente/${paciente?._id}`,
+		if (materia?._id) {
+			await axios.put(
+				`${import.meta.env.VITE_BACKEND_URL}/meteria/${materia?.codigo}`,
 				form,
 				{
 					headers: {
@@ -42,12 +36,12 @@ export const Formulario = ({ paciente }) => {
 				}
 			);
 
-			navigate("/dashboard/listar");
+			navigate("/dashboard/materias");
 		} else {
 			try {
 				form.id = auth._id;
 				await axios.post(
-					`${import.meta.env.VITE_BACKEND_URL}/pacientes/registro`,
+					`${import.meta.env.VITE_BACKEND_URL}/materias/registro`,
 					form,
 					{
 						headers: {
@@ -59,12 +53,12 @@ export const Formulario = ({ paciente }) => {
 					}
 				);
 				setAlerta({
-					respuesta: "Paciente registrado con exito y correo enviado",
+					respuesta: "Materia registrada con exito",
 					exito: true,
 				});
 				setTimeout(() => {
-					navigate("/dashboard/listar");
-				}, 5000);
+					navigate("/dashboard/materias");
+				}, 3000);
 			} catch (error) {
 				setAlerta({ respuesta: error.response.data.res, exito: false });
 				setTimeout(() => {
@@ -85,13 +79,13 @@ export const Formulario = ({ paciente }) => {
 					htmlFor="nombre:"
 					className="text-gray-700 uppercase font-bold text-sm"
 				>
-					Nombre de la mascota:
+					Nombre:
 				</label>
 				<input
 					id="nombre"
 					type="text"
 					className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md mb-5"
-					placeholder="nombre de la mascota"
+					placeholder="Nombre de la materia"
 					name="nombre"
 					onChange={handleChange}
 					value={form.nombre}
@@ -99,104 +93,53 @@ export const Formulario = ({ paciente }) => {
 			</div>
 			<div>
 				<label
-					htmlFor="propietario:"
+					htmlFor="codigo:"
 					className="text-gray-700 uppercase font-bold text-sm"
 				>
-					Nombre del propietario:
+					Código:
 				</label>
 				<input
-					id="propietario"
+					id="codigo"
 					type="text"
 					className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md mb-5"
-					placeholder="nombre del propietario"
-					name="propietario"
+					placeholder="Código de la materia"
+					name="codigo"
 					onChange={handleChange}
-					value={form.propietario}
+					value={form.codigo}
 				/>
 			</div>
 			<div>
 				<label
-					htmlFor="email:"
+					htmlFor="descripcion:"
 					className="text-gray-700 uppercase font-bold text-sm"
 				>
-					Email:
+					Descripción:
 				</label>
 				<input
-					id="email"
-					type="email"
-					className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md mb-5"
-					placeholder="email del propietario"
-					name="email"
-					onChange={handleChange}
-					value={form.email}
-				/>
-			</div>
-			<div>
-				<label
-					htmlFor="celular:"
-					className="text-gray-700 uppercase font-bold text-sm"
-				>
-					Celular:
-				</label>
-				<input
-					id="celular"
-					type="number"
-					className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md mb-5"
-					placeholder="celular del propietario"
-					name="celular"
-					onChange={handleChange}
-					value={form.celular}
-				/>
-			</div>
-			<div>
-				<label
-					htmlFor="convencional:"
-					className="text-gray-700 uppercase font-bold text-sm"
-				>
-					Convencional:
-				</label>
-				<input
-					id="convencional"
-					type="number"
-					className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md mb-5"
-					placeholder="convencional del propietario"
-					name="convencional"
-					onChange={handleChange}
-					value={form.convencional}
-				/>
-			</div>
-			<div>
-				<label
-					htmlFor="Salida:"
-					className="text-gray-700 uppercase font-bold text-sm"
-				>
-					Fecha de salida:
-				</label>
-				<input
-					id="salida"
-					type="date"
-					className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md mb-5"
-					placeholder="salida"
-					name="salida"
-					onChange={handleChange}
-					value={form.salida}
-				/>
-			</div>
-			<div>
-				<label
-					htmlFor="sintomas:"
-					className="text-gray-700 uppercase font-bold text-sm"
-				>
-					Síntomas:
-				</label>
-				<textarea
-					id="sintomas"
+					id="descripcion"
 					type="text"
 					className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md mb-5"
-					placeholder="Ingrese los síntomas de la mascota"
-					name="sintomas"
+					placeholder="Descripción de la materia"
+					name="descripcion"
 					onChange={handleChange}
-					value={form.sintomas}
+					value={form.descripcion}
+				/>
+			</div>
+			<div>
+				<label
+					htmlFor="creditos:"
+					className="text-gray-700 uppercase font-bold text-sm"
+				>
+					Créditos:
+				</label>
+				<input
+					id="creditos"
+					type="number"
+					className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md mb-5"
+					placeholder="Créditos de la materia"
+					name="creditos"
+					onChange={handleChange}
+					value={form.creditos}
 				/>
 			</div>
 			{alerta.respuesta && (
@@ -208,7 +151,7 @@ export const Formulario = ({ paciente }) => {
                     text-slate-300 uppercase font-bold rounded-lg 
                     hover:bg-gray-900 cursor-pointer transition-all"
 				value={
-					paciente?._id ? "Actualizar paciente" : "Registrar paciente"
+					materia?._id ? "Actualizar materia" : "Registrar materia"
 				}
 			/>
 		</form>

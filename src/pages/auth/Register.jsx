@@ -7,8 +7,6 @@ export const Register = () => {
 	const [form, setForm] = useState({
 		nombre: "",
 		apellido: "",
-		direccion: "",
-		telefono: "",
 		email: "",
 		password: "",
 	});
@@ -90,44 +88,6 @@ export const Register = () => {
 								value={form.apellido || ""}
 								type="text"
 								placeholder="Ingrese su apellido"
-								className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500"
-							/>
-						</div>
-
-						<div className="mb-3">
-							<label
-								className="mb-2 block text-sm font-semibold"
-								htmlFor="direccion"
-							>
-								Dirección
-							</label>
-							<input
-								required
-								id="direccion"
-								name="direccion"
-								onChange={handleChange}
-								value={form.direccion || ""}
-								type="text"
-								placeholder="Ingrese su dirección"
-								className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500"
-							/>
-						</div>
-
-						<div className="mb-3">
-							<label
-								className="mb-2 block text-sm font-semibold"
-								htmlFor="direccion"
-							>
-								Teléfono
-							</label>
-							<input
-								required
-								id="telefono"
-								name="telefono"
-								onChange={handleChange}
-								value={form.telefono || ""}
-								type="tel"
-								placeholder="Ingrese su dirección"
 								className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500"
 							/>
 						</div>

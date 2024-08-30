@@ -85,42 +85,6 @@ const FormularioPerfil = () => {
 
 			<div>
 				<label
-					htmlFor="direccion"
-					className="text-gray-700 uppercase font-bold text-sm"
-				>
-					Dirección:{" "}
-				</label>
-				<input
-					id="direccion"
-					type="text"
-					className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md mb-5"
-					placeholder="direccion"
-					name="direccion"
-					value={form.direccion}
-					onChange={handleChange}
-				/>
-			</div>
-
-			<div>
-				<label
-					htmlFor="telefono"
-					className="text-gray-700 uppercase font-bold text-sm"
-				>
-					Teléfono:{" "}
-				</label>
-				<input
-					id="ditelefonoreccion"
-					type="text"
-					className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md mb-5"
-					placeholder="telefono"
-					name="telefono"
-					value={form.telefono}
-					onChange={handleChange}
-				/>
-			</div>
-
-			<div>
-				<label
 					htmlFor="email"
 					className="text-gray-700 uppercase font-bold text-sm"
 				>

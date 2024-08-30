@@ -54,11 +54,8 @@ const Password = () => {
 	return (
 		<>
 			<div className="mt-5">
-				<h1 className="font-black text-4xl text-gray-500">Password</h1>
+				<h1 className="font-black text-4xl text-gray-500">Contraseña</h1>
 				<hr className="my-4" />
-				<p className="mb-2">
-					Este módulo te permite izar el password del usuario
-				</p>
 			</div>
 			<form onSubmit={handleSubmit}>
 				{alerta.respuesta && (
@@ -70,7 +67,7 @@ const Password = () => {
 						htmlFor="password"
 						className="text-gray-700 uppercase font-bold text-sm"
 					>
-						Password Actual:{" "}
+						Contraseña Actual:{" "}
 					</label>
 					<input
 						id="password"
@@ -88,7 +85,7 @@ const Password = () => {
 						htmlFor="newPassword"
 						className="text-gray-700 uppercase font-bold text-sm"
 					>
-						Nuevo password:{" "}
+						Nueva Contraseña:{" "}
 					</label>
 					<input
 						id="newPassword"

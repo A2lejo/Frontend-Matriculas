@@ -9,11 +9,8 @@ export const AuthProvider = ({ children }) => {
 
 	const perfil = async (token) => {
 		try {
-			const decode = JSON.parse(atob(token.split(".")[1]));
 			const response = await axios.get(
-				decode.rol === "veterinario"
-					? `${import.meta.env.VITE_BACKEND_URL}/perfil`
-					: `${import.meta.env.VITE_BACKEND_URL}/paciente/perfil`,
+					 `${import.meta.env.VITE_BACKEND_URL}/perfil`,
 				{
 					headers: {
 						"Content-Type": "application/json",
@@ -32,7 +29,7 @@ export const AuthProvider = ({ children }) => {
 		const token = localStorage.getItem("token");
 		try {
 			const respuesta = await axios.put(
-				`${import.meta.env.VITE_BACKEND_URL}/veterinario/${datos.id}`,
+				`${import.meta.env.VITE_BACKEND_URL}/usuario/${datos.id}`,
 				datos,
 				{
 					headers: {
@@ -54,7 +51,7 @@ export const AuthProvider = ({ children }) => {
 			const respuesta = await axios.put(
 				`${
 					import.meta.env.VITE_BACKEND_URL
-				}/veterinario/actualizarpassword`,
+				}/usuario/actualizarpassword`,
 				datos,
 				{
 					headers: {

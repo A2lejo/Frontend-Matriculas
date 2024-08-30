@@ -1,19 +1,19 @@
-import { Formulario } from "@components/Formulario";
+import { FormularioMatriculas } from "@components/FormularioMatriculas";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Alertas from "@components/Alertas";
 import axios from "axios";
 
-const Actualizar = () => {
+const ActualizarMatriculas = () => {
 	const { id } = useParams();
-	const [paciente, setPaciente] = useState({});
+	const [matricula, setMatricula] = useState({});
 	const [alerta, setAlerta] = useState({});
 
 	useEffect(() => {
-		const consultarPaciente = async () => {
+		const consultarMatricula = async () => {
 			try {
 				const response = await axios.get(
-					`${import.meta.env.VITE_BACKEND_URL}/paciente/${id}`,
+					`${import.meta.env.VITE_BACKEND_URL}/matricula/${id}`,
 					{
 						headers: {
 							"Content-Type": "application/json",
@@ -23,28 +23,27 @@ const Actualizar = () => {
 						},
 					}
 				);
-				setPaciente(response.data.paciente);
+				setMatricula(response.data.matricula);
 			} catch (error) {
 				setAlerta({
-					respuesta: `No existe un paciente con el id ${id}`,
+					respuesta: `No existe una matricula con el id ${id}`,
 					exito: false,
 				});
 			}
 		};
-		consultarPaciente();
+		consultarMatricula();
 	}, []);
 
 	return (
 		<div>
 			<h1 className="font-black text-4xl text-gray-500">
-				Actualizar Paciente
+				Actualizar Matricula
 			</h1>
 			<p className="mb-8 my-4">
-				Este módulo te permite actualizar los datos de un paciente
-				registrado
+				Actualiza los datos de la matricula
 			</p>
-			{paciente._id ? (
-				<Formulario paciente={paciente} />
+			{matricula._id ? (
+				<FormularioMatriculas matricula={matricula} />
 			) : (
 				alerta.respuesta && (
 					<Alertas exito={alerta.exito}>{alerta.respuesta}</Alertas>
@@ -54,4 +53,4 @@ const Actualizar = () => {
 	);
 };
 
-export default Actualizar;
+export default ActualizarMatriculas;
