@@ -1,4 +1,4 @@
-import logoDog from "@assets/doglost.jpg";
+import NoEncontrado from "@assets/NoEncontrado.jpeg";
 import { Link } from "react-router-dom";
 
 export const NotFound = () => {
@@ -6,7 +6,7 @@ export const NotFound = () => {
 		<div className="flex flex-col items-center justify-center">
 			<img
 				class="object-cover h-80 w-80 rounded-full border-4 border-solid border-slate-600"
-				src={logoDog}
+				src={NoEncontrado}
 				alt="image description"
 			/>
 

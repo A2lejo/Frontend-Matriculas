@@ -152,7 +152,7 @@ export const Register = () => {
 			</div>
 
 			<div
-				className="w-1/2 min-h-screen bg-[url('/public/images/dogregister.jpg')] 
+				className="w-1/2 min-h-screen bg-[url('./assets/fondos/registro.jpg')] 
             bg-no-repeat bg-cover bg-center sm:block hidden
             "
 			></div>
