@@ -9,7 +9,7 @@ export const LandinPage = () => {
     const [darkMode, setdarkMode] = useState(false)
     return (
         <div className={darkMode ? "dark" : ""}>
-            <main className="bg-white px-10 md:px-20 lg:px-40 dark:bg-gray-800">
+            <main className="bg-white px-10 md:px-20 lg:px-40 dark:bg-gray-800 min-h-screen">
                 <section>
                     <nav className="p-10 mb-12 flex justify-between">
                         <h1 className="text-2xl font-bold dark:text-white">

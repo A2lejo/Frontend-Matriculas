@@ -23,7 +23,7 @@ const ActualizarMatriculas = () => {
 						},
 					}
 				);
-				setMatricula(response.data.matricula);
+				setMatricula(response.data.matriculas);
 			} catch (error) {
 				setAlerta({
 					respuesta: `No existe una matricula con el id ${id}`,
@@ -42,7 +42,7 @@ const ActualizarMatriculas = () => {
 			<p className="mb-8 my-4">
 				Actualiza los datos de la matricula
 			</p>
-			{matricula._id ? (
+			{matricula?._id ? (
 				<FormularioMatriculas matricula={matricula} />
 			) : (
 				alerta.respuesta && (

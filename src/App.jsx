@@ -95,8 +95,12 @@ function App() {
 												element={<VisualizarMatriculas />}
 											/>
 											<Route
-												path="matriculas/acutalizar/:id"
+												path="matriculas/actualizar/:id"
 												element={<ActualizarMatriculas />}
+											/>
+											<Route
+												path="*"
+												element={<NotFound />}
 											/>
 										</Route>
 									</Routes>
