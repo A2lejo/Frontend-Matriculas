@@ -23,7 +23,7 @@ export const FormularioMaterias = ({ materia }) => {
 
 		if (materia?._id) {
 			await axios.put(
-				`${import.meta.env.VITE_BACKEND_URL}/meteria/${materia?.codigo}`,
+				`${import.meta.env.VITE_BACKEND_URL}/materia/${materia?.codigo}`,
 				form,
 				{
 					headers: {
@@ -41,7 +41,7 @@ export const FormularioMaterias = ({ materia }) => {
 			try {
 				form.id = auth._id;
 				await axios.post(
-					`${import.meta.env.VITE_BACKEND_URL}/materias/registro`,
+					`${import.meta.env.VITE_BACKEND_URL}/materia/registro`,
 					form,
 					{
 						headers: {
