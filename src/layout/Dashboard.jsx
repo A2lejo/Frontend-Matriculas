@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { AuthContext } from "@context/AuthProvider";
 import { Navigate } from "react-router-dom";
+import libro from "@assets/iconos/iconoDashboard.png";
+import perfil from "@assets/iconos/perfil.png";
 
 const Dashboard = () => {
 	const location = useLocation();
@@ -19,7 +21,7 @@ const Dashboard = () => {
 				</h2>
 
 				<img
-					src="./src/assets/iconos/iconoDashboard.png"
+					src={libro}
 					alt="img-client"
 					className="m-auto mt-5 p-1 border-2 border-slate-500 rounded-full"
 					width={120}
@@ -94,7 +96,7 @@ const Dashboard = () => {
 					</div>
 					<div>
 						<img
-							src="./src/assets/iconos/perfil.png"
+							src={perfil}
 							alt="img-client"
 							className="border-2 border-green-300 rounded-full"
 							width={50}

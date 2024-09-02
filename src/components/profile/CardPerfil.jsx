@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "@context/AuthProvider";
+import perfil from "@assets/iconos/perfil.png";
 
 export const CardPerfil = () => {
 	const { auth } = useContext(AuthContext);
@@ -10,7 +11,7 @@ export const CardPerfil = () => {
 		>
 			<div>
 				<img
-					src="./src/assets/iconos/perfil.png"
+					src={perfil}
 					alt="img-client"
 					className="m-auto border-black border-2 rounded-full"
 					width={120}
