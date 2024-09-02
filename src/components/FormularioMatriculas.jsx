@@ -218,7 +218,7 @@ export const FormularioMatriculas = ({ matricula }) => {
                     text-slate-300 uppercase font-bold rounded-lg 
                     hover:bg-gray-900 cursor-pointer transition-all"
                 value={
-                    matricula?._id ? "Actualizar materia" : "Registrar materia"
+                    matricula?._id ? "Actualizar matricula" : "Registrar matricula"
                 }
             />
         </form>
